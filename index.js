@@ -83,10 +83,14 @@ function computerchoice(){
     roundsPlayed++ // increment roundsPlayed by 1 after every round
     
     }
-    console.log(` player won : ${playerScore} times `);
-    console.log(` computer won : ${computerScore} times  `);
-    console.log(` roundsPlayed : ${roundsPlayed}  `);
-    console.log(` roundstied : ${roundstied}  `);
-    }
+    
+    document.getElementById("result").innerHTML = `Player won: ${playerScore} times. Computer won: ${computerScore} times. Rounds played: ${roundsPlayed}. Rounds tied: ${roundstied}`;    }
+    
   
-  game() // invoke the game 
+  // invoke the game 
+
+
+
+
+
+  // show game result in the dome 
