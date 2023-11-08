@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+ul {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px;
+    padding:10px;
+}
+
+.btns {
+    font-size: 32px;
+    padding: 20px;
+    margin-right: 70px ;
+    align-self: center;
+
+}
+
+button {
+    padding: 20px;
+    font-size: 15px;
+}

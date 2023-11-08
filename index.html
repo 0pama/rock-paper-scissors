@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <button onclick="game()"> start game</button>
-    <h1 id="result"></h1>
+  <div class="btns">
+  <button value="rock">rock</button>
+  <button value="paper">paper</button>
+  <button value="scissors">scissors</button>
+  </div >
+    <div class="resultbox">
+    <h1 id="results"></h1>
+    <ul>
+      <li id = "roundsplayed"></li>
+      <li id = "playerscore"></li>
+      <li id="compscore"></li>
+    </ul>
+  </div>
 </body>
 </html>
 

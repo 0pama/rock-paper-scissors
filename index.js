@@ -10,19 +10,9 @@ function computerchoice(){
     return "scissors"
     }
   }
-  // gettin player choice
-  function playerchoice(player){
-  player = prompt("what is your choice")
-  if (/paper/i.test(player)     // validating player input
-     ||/rock/i.test(player)                 
-     || /scissors/i.test(player)) {
-     return player
-     } else {
-      return undefined
-     }
-  }
-  
-  
+
+
+
   
   // deciding who wins
   function playround(comp,player){
@@ -48,49 +38,66 @@ function computerchoice(){
 
   // game section
   
-  function game(){
-    let playerScore = 0;      
-    let computerScore = 0;
-    let roundsPlayed = 0;
-    let roundstied = 0;
 
 
-    for (let i = 0; i < 5; i++) {
-   const  player = playerchoice();
-   const  computer = computerchoice();
 
-    if (player == undefined) {
-   return console.log("errror wrong input"); // stoping the the game if the player input is wrong
+ let buttons = document.getElementsByTagName("button");
 
+ let playerScore = 0;      
+ let computerScore = 0;
+ let roundsPlayed = 0;
+ let roundstied = 0;
 
-   } else {   // if player input is right start playing the game
-      const result = playround(computer,player); // intialize the return value from the function to the  result
-      console.log(`round:${i+1} ${result}`);
+ 
+for (let i = 0 ; i < buttons.length; i++){
+buttons[i].addEventListener("click", function(e){
+    let playerchoice = e.target.value;
+    let compchoice = computerchoice();
+    let result = playround(compchoice,playerchoice);
+    roundsPlayed++;
 
-      if(result === `player wins, ${player} beats ${computer} `) {   // if the result is == "player wins" 
-      playerScore++ // increment player score by 1 if player wins 
-      } 
-      
-      else if(result === `computer wins, ${computer} beats ${player} `) {  //else  if the result is == "computer wins"
+    if(result === `computer wins, ${compchoice} beats ${playerchoice} `) {  //else  if the result is == "computer wins"
       computerScore++; // increment computer score by 1 if computer wins
       } 
-      
-      else {  // if the result is not = "player wins" and "computer wins"
-         roundstied++  // increment roundstied score by 1 if no one wins 
-      }
+      if(result === `player wins, ${playerchoice} beats ${compchoice} `) {   // if the result is == "player wins" 
+        playerScore++ // increment player score by 1 if player wins 
+        } 
+        if (playerScore > 5 ) {
+           playerScore = 0;      
+           computerScore = 0;
+           roundsPlayed = 0;
+           roundstied = 0;
+        }
+        if (computerScore == 5) {
+          document.getElementById("results").innerHTML = `<h1 id = "extra-large">you lost</h1>`;
+        }
 
-    }
-    roundsPlayed++ // increment roundsPlayed by 1 after every round
-    
-    }
-    
-    document.getElementById("result").innerHTML = `Player won: ${playerScore} times. Computer won: ${computerScore} times. Rounds played: ${roundsPlayed}. Rounds tied: ${roundstied}`;    }
-    
+      if(playerScore == 5 ) {
+        document.getElementById("results").innerHTML = `<h1>you won  ${playerScore}   times </h1>`;
   
-  // invoke the game 
+       
+      } else {
+        document.getElementById("results").innerHTML = result ;
+        document.getElementById("roundsplayed").innerHTML = "rounds played: " + roundsPlayed ;
+        document.getElementById("playerscore").innerHTML = "playerscore: " + playerScore ;
+        document.getElementById("compscore").innerHTML = "computer score : " + computerScore ;
+
+        
+      }
+      
+    console.log(roundstied);
+    console.log("compscore :" + computerScore + "  player :" + playerScore );
+    
+    
+   
+
+
+ });
+
+}
+  
 
 
 
 
-
-  // show game result in the dome 
+  
